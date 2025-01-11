@@ -738,5 +738,11 @@ var Mapping = function (_a) {
     return jsxRuntimeExports.jsx("div", { children: message });
 };
 
+var LeafletMapping = function (_a) {
+    var message = _a.message;
+    return jsxRuntimeExports.jsx("div", { children: message });
+};
+
+exports.LeafletMapping = LeafletMapping;
 exports.Mapping = Mapping;
 //# sourceMappingURL=index.cjs.js.map

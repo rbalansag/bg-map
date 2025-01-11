@@ -730,5 +730,10 @@ var Mapping = function (_a) {
     return jsxRuntimeExports.jsx("div", { children: message });
 };
 
-export { Mapping };
+var LeafletMapping = function (_a) {
+    var message = _a.message;
+    return jsxRuntimeExports.jsx("div", { children: message });
+};
+
+export { LeafletMapping, Mapping };
 //# sourceMappingURL=index.esm.js.map
