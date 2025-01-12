@@ -13,8 +13,8 @@ export interface MarkerProps {
 }
 
 
-const iconSrc = require('../assets/PinLocation.webp')
-const iconShadowSrc = require('../assets/PinLocationShadow.webp')
+const iconSrc = require('@balansag.group/bg-map/src/assets/PinLocation.webp')
+const iconShadowSrc = require('@balansag.group/bg-map/src/assets/PinLocationShadow.webp')
 
 const PinLocation = new L.Icon({
     iconUrl: iconSrc,
