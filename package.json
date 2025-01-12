@@ -6,7 +6,8 @@
   "module": "dist/index.esm.js",
   "types": "dist/Mapping.d.ts",
   "files": [
-    "dist"
+    "dist",
+    "src/assets"
   ],
   "peerDependencies": {
     "react": ">=16.8.0",
@@ -21,6 +22,7 @@
     "react-dom": "^19.0.0-rc.1",
     "react-leaflet": "^5.0.0-rc.2",
     "react-scripts": "^5.0.1",
+    "rollup-plugin-copy": "^3.5.0",
     "rollup-plugin-postcss": "^4.0.2"
   },
   "scripts": {

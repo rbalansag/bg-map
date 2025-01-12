@@ -44,6 +44,19 @@ function App() {
       <header className="App-header">
         <Map position={currentLocation} hasLayers={layered} hasMinimap={false} minimapSize={{ height: 150, width: 150 }}>
           <Boundary BoundaryParameter={BoundaryParameter} />
+          
+          {/* Add markers with popups and tooltips */}
+          {multipleLocation.map((location, index) => (
+            <Marker key={index} position={location}>
+              <Tooltip>Location {index + 1}</Tooltip>
+              <Popup>This is location {index + 1}</Popup>
+            </Marker>
+          ))}
+
+          {/* Add polygons */}
+          {multiPolygon.map((polygon, index) => (
+            <Polygon key={index} positions={polygon} />
+          ))}
         </Map>
       </header>
     </div>
