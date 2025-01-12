@@ -4,38 +4,19 @@
 # ---------------------------
 echo "Running npm build script..."
 
-# Ask for version update
-echo "Do you want to update the package version? (y/n)"
-read update_version
+echo "Enter version type (patch, minor, major): "
+read version_type
 
-if [ "$update_version" = "y" ]; then
-    echo "Enter version type (patch, minor, major): "
-    read version_type
-
-    if [[ "$version_type" != "patch" && "$version_type" != "minor" && "$version_type" != "major" ]]; then
-        echo "Invalid version type. Please enter 'patch', 'minor', or 'major'. Exiting."
-        exit 1
-    fi
-
-    # Force update the npm version
-    npm --force version $version_type
+if [[ "$version_type" != "patch" && "$version_type" != "minor" && "$version_type" != "major" ]]; then
+    echo "Invalid version type. Please enter 'patch', 'minor', or 'major'. Exiting."
+    exit 1
 fi
 
-# Ask about building
-echo "Do you want to build the package? (y/n)"
-read should_build
+# Force update the npm version
+npm --force version $version_type
 
-if [ "$should_build" = "y" ]; then
-    npm run build
-fi
+# Build and publish
+npm run build
+npm publish
 
-# Ask about publishing
-echo "Do you want to publish the package? (y/n)"
-read should_publish
-
-if [ "$should_publish" = "y" ]; then
-    npm publish
-    echo "NPM package has been published successfully!"
-fi
-
-echo "NPM operations completed!"
+echo "NPM package has been updated, built, and published successfully!"
