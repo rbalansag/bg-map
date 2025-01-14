@@ -1,13 +1,12 @@
 {
   "name": "@balansag.group/bg-map",
-  "version": "0.0.20",
+  "version": "0.0.21",
   "private": false,
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
   "types": "dist/Mapping.d.ts",
   "files": [
-    "dist",
-    "src/assets"
+    "dist"
   ],
   "peerDependencies": {
     "react": ">=16.8.0",
