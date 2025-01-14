@@ -39,7 +39,7 @@ function App() {
     },
   ];
 
-  const layered = false;
+  const layered = true;
 
   return (
     <div className="App">
@@ -52,9 +52,11 @@ function App() {
             <>
               <Marker
                 key={index}
+                inLayer={layered}
+                layerName={index}
                 position={location}
-                iconUrl={iconSrc}
-                iconShadowUrl={iconShadowSrc}
+                // iconUrl={iconSrc}
+                // iconShadowUrl={iconShadowSrc}
               >
                 <Tooltip>Location {index + 1}</Tooltip>
                 <Popup>This is location {index + 1}</Popup>

@@ -7,7 +7,7 @@ export interface MarkerProps {
     children?: React.ReactNode;
     inLayer?: boolean;
     layerName?: string;
-    iconUrl: string;
+    iconUrl?: string;
     iconShadowUrl?: string;
 }
 export declare const Marker: React.FC<MarkerProps>;

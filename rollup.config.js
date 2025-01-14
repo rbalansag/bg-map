@@ -2,6 +2,8 @@ import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import typescript from 'rollup-plugin-typescript2';
 import postcss from 'rollup-plugin-postcss';
+import copy from 'rollup-plugin-copy';
+import url from '@rollup/plugin-url';
 
 export default {
   input: 'src/Mapping/index.tsx',
@@ -20,7 +22,6 @@ export default {
   plugins: [
     resolve({
       extensions: ['.js', '.ts', '.tsx'],
-      excludeExtensions: ['.webp', '.png', '.jpg', '.jpeg', '.gif', '.svg']
     }),
     commonjs(),
     postcss({
@@ -33,6 +34,18 @@ export default {
     typescript({
       tsconfig: './tsconfig.json',
     }),
+    copy({
+      targets: [
+        {
+          src: 'src/assets/*',
+          dest: 'dist/assets'
+        }
+      ]
+    }),
+    url({
+      include: ['**/*.webp', '**/*.png', '**/*.jpg', '**/*.gif'],
+      limit: 8192
+    })
   ],
   external: ['react', 'react-dom'],
 };
