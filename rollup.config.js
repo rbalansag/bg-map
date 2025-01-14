@@ -20,6 +20,7 @@ export default {
   plugins: [
     resolve({
       extensions: ['.js', '.ts', '.tsx'],
+      excludeExtensions: ['.webp', '.png', '.jpg', '.jpeg', '.gif', '.svg']
     }),
     commonjs(),
     postcss({

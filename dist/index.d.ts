@@ -1,4 +1,3 @@
-// Leaflet mapping
 export { Map } from './Map';
 export { Marker } from './Marker';
 export { Popup } from './Popup';

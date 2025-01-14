@@ -15,8 +15,13 @@ fi
 # Force update the npm version
 npm --force version $version_type
 
-# Build and publish
+# Build
 npm run build
+
+# Remove assets from dist folder if they exist
+rm -rf dist/assets
+
+# Publish
 npm publish
 
 echo "NPM package has been updated, built, and published successfully!"
