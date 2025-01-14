@@ -4,6 +4,8 @@ import 'leaflet/dist/leaflet.css'
 import './leaflet-custom.css'
 import L, { LatLngExpression } from 'leaflet';
 import { LayersControl } from 'react-leaflet'
+import iconSrc from '../assets/PinLocation.webp';
+import iconShadowSrc from '../assets/PinLocationShadow.webp';
 
 export interface MarkerProps {
     position: LatLngExpression;
@@ -12,9 +14,6 @@ export interface MarkerProps {
     layerName?: string;
 }
 
-
-const iconSrc = require('@balansag.group/bg-map/src/assets/PinLocation.webp')
-const iconShadowSrc = require('@balansag.group/bg-map/src/assets/PinLocationShadow.webp')
 
 const PinLocation = new L.Icon({
     iconUrl: iconSrc,
