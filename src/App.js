@@ -1,11 +1,26 @@
 import logo from './logo.svg';
 import './App.css';
 import { Map, Marker, Popup, Tooltip, Polygon, Boundary } from './Mapping'
-import iconSrc from './assets/PinLocation.webp';
-import iconShadowSrc from './assets/PinLocationShadow.webp';
+import { useState, useRef, useMemo, useCallback } from 'react';
 
 function App() {
   const currentLocation = [51.505, -0.09];
+  const draggableLocation = [51.505, -1.09];
+  const [draggablePosition, setDraggablePosition] = useState(draggableLocation);
+  const markerRef = useRef(null);
+  
+  const eventHandlers = useMemo(
+    () => ({
+      dragend() {
+        const marker = markerRef.current;
+        if (marker != null) {
+          setDraggablePosition(marker.getLatLng());
+        }
+      },
+    }),
+    [],
+  );
+
   const multipleLocation = [
     [51.505, -0.09],  // London
     [48.8566, 2.3522], // Paris
@@ -47,6 +62,18 @@ function App() {
         <Map position={currentLocation} hasLayers={layered} hasMinimap={false} minimapSize={{ height: 150, width: 150 }}>
           <Boundary BoundaryParameter={BoundaryParameter} />
 
+          {/* Add draggable marker */}
+          <Marker
+            position={draggablePosition}
+            draggable={true}
+            eventHandlers={eventHandlers}
+            ref={markerRef}
+          >
+            <Popup>
+              Drag me around!
+            </Popup>
+          </Marker>
+
           {/* Add markers with popups and tooltips */}
           {multipleLocation.map((location, index) => (
             <>
@@ -55,15 +82,12 @@ function App() {
                 inLayer={layered}
                 layerName={index}
                 position={location}
-                // iconUrl={iconSrc}
-                // iconShadowUrl={iconShadowSrc}
               >
                 <Tooltip>Location {index + 1}</Tooltip>
                 <Popup>This is location {index + 1}</Popup>
               </Marker>
             </>
           ))}
-
 
           {/* Add polygons */}
           {multiPolygon.map((polygon, index) => (

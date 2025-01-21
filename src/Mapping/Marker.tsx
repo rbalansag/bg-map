@@ -4,8 +4,6 @@ import 'leaflet/dist/leaflet.css'
 import './leaflet-custom.css'
 import L, { LatLngExpression } from 'leaflet';
 import { LayersControl } from 'react-leaflet'
-import iconSrc from '../assets/PinLocation.webp';
-import iconShadowSrc from '../assets/PinLocationShadow.webp';
 
 export interface MarkerProps {
     position: LatLngExpression;
@@ -14,14 +12,21 @@ export interface MarkerProps {
     layerName?: string;
     iconUrl?: string;
     iconShadowUrl?: string;
+    draggable?: boolean;
+    eventHandlers?: any;
+    ref?: any;
 }
 
+const iconSrc = `${process.env.PUBLIC_URL}/assets/PinLocation.webp`;
+const iconShadowSrc = `${process.env.PUBLIC_URL}/assets/PinLocationShadow.webp`;
+
+export const PIN_LOCATION_ICON = iconSrc;
+export const PIN_LOCATION_SHADOW = iconShadowSrc;
 
 const PinLocation = new L.Icon({
     iconUrl: iconSrc,
     iconRetinaUrl: iconSrc,
     shadowUrl: iconShadowSrc,
-
     shadowAnchor: [24, 40],
     shadowSize: [50, 64],
     popupAnchor: [-3, -76],
@@ -30,14 +35,16 @@ const PinLocation = new L.Icon({
     iconAnchor: [37, 75]
 });
 
-
 export const Marker: React.FC<MarkerProps> = ({
     position,
     children,
     inLayer = false,
     layerName = "Marker Layer",
     iconUrl = iconSrc,
-    iconShadowUrl = iconShadowSrc
+    iconShadowUrl = iconShadowSrc,
+    draggable = false,
+    eventHandlers,
+    ref
 }: MarkerProps) => {
     const customIcon = new L.Icon({
         iconUrl: iconUrl,
@@ -52,7 +59,13 @@ export const Marker: React.FC<MarkerProps> = ({
     });
 
     const marker = (
-        <LeafletMarker position={position} icon={customIcon}>
+        <LeafletMarker 
+            position={position} 
+            icon={customIcon}
+            draggable={draggable}
+            eventHandlers={eventHandlers}
+            ref={ref}
+        >
             <>
                 {children}
             </>

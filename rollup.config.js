@@ -38,7 +38,7 @@ export default {
       targets: [
         {
           src: 'src/assets/*',
-          dest: 'dist/assets'
+          dest: 'public/assets'
         }
       ]
     }),
