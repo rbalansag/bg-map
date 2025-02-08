@@ -9,5 +9,10 @@ export interface MarkerProps {
     layerName?: string;
     iconUrl?: string;
     iconShadowUrl?: string;
+    draggable?: boolean;
+    eventHandlers?: any;
+    ref?: any;
 }
+export declare const PIN_LOCATION_ICON: string;
+export declare const PIN_LOCATION_SHADOW: string;
 export declare const Marker: React.FC<MarkerProps>;

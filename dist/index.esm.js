@@ -15891,10 +15891,8 @@ var Map$1 = function (_a) {
     return (jsxRuntimeExports.jsxs(MapContainer, { center: position, zoom: 13, scrollWheelZoom: true, style: { width: "100%", height: "100vh" }, attributionControl: false, children: [jsxRuntimeExports.jsx(TileLayer, { url: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" }), hasMinimap && (jsxRuntimeExports.jsx(MinimapControl, { position: "bottomright", size: minimapSize })), hasLayers ? (jsxRuntimeExports.jsx(LayersControl, { position: "topright", children: children })) : children] }));
 };
 
-var iconSrc = "75a04ba1486cc479.webp";
-
-var iconShadowSrc = "eef04e8d2b7bbb74.webp";
-
+var iconSrc = "".concat(process.env.PUBLIC_URL, "/assets/PinLocation.webp");
+var iconShadowSrc = "".concat(process.env.PUBLIC_URL, "/assets/PinLocationShadow.webp");
 new L$1.Icon({
     iconUrl: iconSrc,
     iconRetinaUrl: iconSrc,
@@ -15907,7 +15905,7 @@ new L$1.Icon({
     iconAnchor: [37, 75]
 });
 var Marker = function (_a) {
-    var position = _a.position, children = _a.children, _b = _a.inLayer, inLayer = _b === void 0 ? false : _b, _c = _a.layerName, layerName = _c === void 0 ? "Marker Layer" : _c, _d = _a.iconUrl, iconUrl = _d === void 0 ? iconSrc : _d, _e = _a.iconShadowUrl, iconShadowUrl = _e === void 0 ? iconShadowSrc : _e;
+    var position = _a.position, children = _a.children, _b = _a.inLayer, inLayer = _b === void 0 ? false : _b, _c = _a.layerName, layerName = _c === void 0 ? "Marker Layer" : _c, _d = _a.iconUrl, iconUrl = _d === void 0 ? iconSrc : _d, _e = _a.iconShadowUrl, iconShadowUrl = _e === void 0 ? iconShadowSrc : _e, _f = _a.draggable, draggable = _f === void 0 ? false : _f, eventHandlers = _a.eventHandlers, ref = _a.ref;
     var customIcon = new L$1.Icon({
         iconUrl: iconUrl,
         iconRetinaUrl: iconUrl,
@@ -15919,7 +15917,7 @@ var Marker = function (_a) {
         className: 'leaflet-div-icon',
         iconAnchor: [37, 75]
     });
-    var marker = (jsxRuntimeExports.jsx(Marker$1, { position: position, icon: customIcon, children: jsxRuntimeExports.jsx(jsxRuntimeExports.Fragment, { children: children }) }));
+    var marker = (jsxRuntimeExports.jsx(Marker$1, { position: position, icon: customIcon, draggable: draggable, eventHandlers: eventHandlers, ref: ref, children: jsxRuntimeExports.jsx(jsxRuntimeExports.Fragment, { children: children }) }));
     return inLayer ? (jsxRuntimeExports.jsx(LayersControl.Overlay, { checked: true, name: layerName, children: jsxRuntimeExports.jsx(jsxRuntimeExports.Fragment, { children: marker }) })) : marker;
 };
 
