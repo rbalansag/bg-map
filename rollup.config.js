@@ -6,7 +6,7 @@ import copy from 'rollup-plugin-copy';
 import url from '@rollup/plugin-url';
 
 export default {
-  input: 'src/index.tsx',
+  input: 'src/Mapping/index.tsx',
   output: [
     {
       file: 'dist/index.cjs.js',
